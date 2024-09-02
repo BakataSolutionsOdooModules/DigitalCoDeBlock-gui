@@ -23,7 +23,7 @@
   "homepage": "https://github.com/openblockcc/openblock-gui#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/openblockcc/openblock-gui.git"
+    "url": "git+ssh://git@github.com:javierduquebakata/DigitalCoDeBlock-gui.git"
   },
   "dependencies": {
     "@ramonak/react-progress-bar": "^3.1.0",
