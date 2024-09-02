@@ -52,7 +52,8 @@ const base = {
                     '@babel/plugin-proposal-object-rest-spread',
                     ['react-intl', {
                         messagesDir: './translations/messages/'
-                    }]],
+                    }]
+                ],
                 presets: ['@babel/preset-env', '@babel/preset-react']
             }
         },
@@ -197,7 +198,7 @@ module.exports = [
         defaultsDeep({}, base, {
             target: 'web',
             entry: {
-                'openblock-gui': './src/index.js'
+                'digitalcodeblock-gui': './src/index.js'
             },
             output: {
                 libraryTarget: 'umd',
