@@ -66,10 +66,10 @@ describe('Menu bar settings', () => {
 
     test('(GH#4064) Project name should be editable', async () => {
         await loadUri(uri);
-        const el = await findByXpath('//input[@value="OpenBlock Project"]');
+        const el = await findByXpath('//input[@value="DigitalCoDeBlock Project"]');
         await el.sendKeys(' - Personalized');
         await clickText('Costumes'); // just to blur the input
-        await clickXpath('//input[@value="OpenBlock Project - Personalized"]');
+        await clickXpath('//input[@value="DigitalCoDeBlock Project - Personalized"]');
     });
 
     test('User is not warned before uploading project file over a fresh project', async () => {
