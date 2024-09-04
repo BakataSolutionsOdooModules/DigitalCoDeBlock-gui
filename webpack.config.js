@@ -159,19 +159,19 @@ module.exports = [
                 chunks: ['lib.min', 'blocksonly'],
                 template: 'src/playground/index.ejs',
                 filename: 'blocks-only.html',
-                title: 'OpenBlock GUI: Blocks Only Example'
+                title: 'DigitalCoDeBlock GUI: Blocks Only Example'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'compatibilitytesting'],
                 template: 'src/playground/index.ejs',
                 filename: 'compatibility-testing.html',
-                title: 'OpenBlock GUI: Compatibility Testing'
+                title: 'DigitalCoDeBlock GUI: Compatibility Testing'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'player'],
                 template: 'src/playground/index.ejs',
                 filename: 'player.html',
-                title: 'OpenBlock GUI: Player Example'
+                title: 'DigitalCoDeBlock GUI: Player Example'
             }),
             new CopyWebpackPlugin([{
                 from: 'static',

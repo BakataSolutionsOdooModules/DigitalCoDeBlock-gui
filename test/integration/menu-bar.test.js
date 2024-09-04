@@ -59,7 +59,7 @@ describe('Menu bar settings', () => {
 
     test('Logo should be clickable', async () => {
         await loadUri(uri);
-        await clickXpath('//img[@alt="OpenBlock"]');
+        await clickXpath('//img[@alt="DigitalCoDeBlock"]');
         const currentUrl = await driver.getCurrentUrl();
         await expect(currentUrl).toEqual('https://scratch.mit.edu/');
     });
