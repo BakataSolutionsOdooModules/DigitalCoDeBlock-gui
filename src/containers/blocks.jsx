@@ -654,13 +654,17 @@ class Blocks extends React.Component {
         this.props.onToolboxDidUpdate();
     }
     onCodeNeedUpdate () {
-        if (this.props.isCodeEditorLocked) {
-            if (this.props.isRealtimeMode === false) {
-                this.props.onSetCodeEditorValue(this.workspaceToCode());
-            }
-        } else {
-            this.props.onCodeEditorIsUnlocked();
+        if (this.props.isRealtimeMode === false) {
+            this.props.onSetCodeEditorValue(this.workspaceToCode());
+            
         }
+        // if (this.props.isCodeEditorLocked) {
+        //     if (this.props.isRealtimeMode === false) {
+        //         this.props.onSetCodeEditorValue(this.workspaceToCode());
+        //     }
+        // } else {
+        //     this.props.onCodeEditorIsUnlocked();
+        // }
     }
     handleOpenSoundRecorder () {
         this.props.onOpenSoundRecorder();

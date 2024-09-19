@@ -14,6 +14,7 @@ import {
 import {
     activateTab,
     BLOCKS_TAB_INDEX,
+    CODE_TAB_INDEX,
     COSTUMES_TAB_INDEX,
     SOUNDS_TAB_INDEX
 } from '../reducers/editor-tab';
@@ -55,7 +56,7 @@ class GUI extends React.Component {
             // At this time the project view in www doesn't need to know when a project is unloaded
             this.props.onProjectLoaded();
         }
-        if (this.props.isRealtimeMode !== true) {
+        if (this.props.isRealtimeMode !== true && [COSTUMES_TAB_INDEX,SOUNDS_TAB_INDEX,].indexOf(this.props.activeTabIndex) !== -1) {
             this.props.onActivateBlocksTab();
         }
     }
@@ -159,7 +160,8 @@ const mapStateToProps = state => {
         telemetryModalVisible: state.scratchGui.modals.telemetryModal,
         tipsLibraryVisible: state.scratchGui.modals.tipsLibrary,
         vm: state.scratchGui.vm,
-        isRealtimeMode: state.scratchGui.programMode.isRealtimeMode
+        isRealtimeMode: state.scratchGui.programMode.isRealtimeMode,
+        codeTabVisible:  state.scratchGui.editorTab.activeTabIndex === CODE_TAB_INDEX,
     };
 };
 
@@ -169,6 +171,7 @@ const mapDispatchToProps = dispatch => ({
     onActivateBlocksTab: () => dispatch(activateTab(BLOCKS_TAB_INDEX)),
     onActivateCostumesTab: () => dispatch(activateTab(COSTUMES_TAB_INDEX)),
     onActivateSoundsTab: () => dispatch(activateTab(SOUNDS_TAB_INDEX)),
+    onActivateCodeTab: () => dispatch(activateTab(CODE_TAB_INDEX)),
     onRequestCloseBackdropLibrary: () => dispatch(closeBackdropLibrary()),
     onRequestCloseCostumeLibrary: () => dispatch(closeCostumeLibrary()),
     onRequestCloseTelemetryModal: () => dispatch(closeTelemetryModal())

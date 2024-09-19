@@ -44,6 +44,7 @@ import addExtensionIcon from './icon--extensions.svg';
 import codeIcon from './icon--code.svg';
 import costumesIcon from './icon--costumes.svg';
 import soundsIcon from './icon--sounds.svg';
+import programIcon from './icon--program.png';
 
 const messages = defineMessages({
     addExtension: {
@@ -108,6 +109,8 @@ const GUIComponent = props => {
         onAbortUpdate,
         onActivateCostumesTab,
         onActivateSoundsTab,
+        onActivateCodeTab,
+        codeTabVisible,
         onActivateTab,
         onClickLogo,
         onClickCheckUpdate,
@@ -157,6 +160,7 @@ const GUIComponent = props => {
     return (<MediaQuery minWidth={layout.fullSizeMinWidth}>{isFullSize => {
         const stageSize = resolveStageSize(stageSizeMode, isFullSize);
 
+        console.dir(props);
         return isPlayerOnly ? (
             <StageWrapper
                 isFullScreen={isFullScreen}
@@ -278,7 +282,7 @@ const GUIComponent = props => {
                 />
                 <Box className={styles.bodyWrapper}>
                     <Box className={styles.flexWrapper}>
-                        <Box className={styles.editorWrapper}>
+                        <Box className={styles.editorWrapper} style={{position: codeTabVisible ? "absolute" : ""}}>
                             <Tabs
                                 forceRenderTabPanel
                                 className={tabClassNames.tabs}
@@ -294,16 +298,14 @@ const GUIComponent = props => {
                                             src={codeIcon}
                                         />
                                         <FormattedMessage
-                                            defaultMessage="Code"
-                                            description="Button to get to the code panel"
-                                            id="gui.gui.codeTab"
+                                            defaultMessage="Bloques"
+                                            description="Button to show blocks"
+                                            id="gui.gui.blockTab"
                                         />
                                     </Tab>
-                                    {/* <Tab
-                                        className={classNames(tabClassNames.tab,
-                                            isRealtimeMode ? styles.hideCustomAndSoundTab :
-                                                styles.showCustomAndSoundTab)}
-                                        onClick={onActivateCostumesTab}
+                                    <Tab
+                                    className={classNames(tabClassNames.tab, isRealtimeMode ? styles.hideCustomAndSoundTab : styles.showCustomAndSoundTab )}
+                                    onClick={onActivateCostumesTab}
                                     >
                                         <img
                                             draggable={false}
@@ -324,9 +326,7 @@ const GUIComponent = props => {
                                         )}
                                     </Tab>
                                     <Tab
-                                        className={classNames(tabClassNames.tab,
-                                            isRealtimeMode ? styles.hideCustomAndSoundTab :
-                                                styles.showCustomAndSoundTab)}
+                                        className={classNames(tabClassNames.tab, isRealtimeMode ? styles.hideCustomAndSoundTab : styles.showCustomAndSoundTab)}
                                         onClick={onActivateSoundsTab}
                                     >
                                         <img
@@ -338,9 +338,25 @@ const GUIComponent = props => {
                                             description="Button to get to the sounds panel"
                                             id="gui.gui.soundsTab"
                                         />
-                                    </Tab> */}
+                                    </Tab>
+                            
+                                <Tab 
+                                    className={classNames(tabClassNames.tab, !isRealtimeMode ? styles.hideCustomAndSoundTab : styles.showCustomAndSoundTab )}
+                                    onClick={onActivateCodeTab}
+                                >
+                                    <img
+                                        draggable={false}
+                                        src={programIcon}
+                                    />
+                                    <FormattedMessage
+                                        defaultMessage="Código"
+                                        description="Button to show only code panel"
+                                        id="gui.gui.codeTab"
+                                    />
+                                </Tab>
+                                    
                                 </TabList>
-                                <TabPanel className={tabClassNames.tabPanel}>
+                                <TabPanel className={tabClassNames.tabPanel} >     
                                     <Box className={styles.blocksWrapper}>
                                         <Blocks
                                             canUseCloud={canUseCloud}
@@ -370,15 +386,18 @@ const GUIComponent = props => {
                                         <Watermark />
                                     </Box>
                                 </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {costumesTabVisible ? <CostumeTab vm={vm} /> : null}
-                                </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {soundsTabVisible ? <SoundTab
-                                        vm={vm}
-                                        onShowMessageBox={onShowMessageBox}
-                                    /> : null}
-                                </TabPanel>
+                                {
+                                    (isRealtimeMode === true) &&
+                                    <>
+                                        <TabPanel className={tabClassNames.tabPanel}>
+                                            {costumesTabVisible && <CostumeTab vm={vm} /> }
+                                        </TabPanel>
+                                        <TabPanel className={tabClassNames.tabPanel}>
+                                            {soundsTabVisible && <SoundTab vm={vm} onShowMessageBox={onShowMessageBox} /> }
+                                        </TabPanel>
+                                    </>
+                                }
+                               
                             </Tabs>
                             {/*
                                     backpackVisible ? (
@@ -386,38 +405,43 @@ const GUIComponent = props => {
                                     ) : null
                                 */}
                         </Box>
-                        {/*<Box
-                            className={classNames(styles.stageAndTargetWrapper, styles[stageSize],
-                                isRealtimeMode ? styles.showStage : styles.hideStage)}
-                        >
-                            <StageWrapper
-                                isFullScreen={isFullScreen}
-                                isRendererSupported={isRendererSupported}
-                                isRtl={isRtl}
-                                stageSize={stageSize}
-                                vm={vm}
-                            />
-                            <Box className={styles.targetWrapper}>
-                                <TargetPane
-                                    stageSize={stageSize}
+                        {
+                            ( isRealtimeMode === true ) ?
+                                <Box
+                                    className={classNames(styles.stageAndTargetWrapper, styles[stageSize], styles.showStage )}
+                                >
+                                    <StageWrapper
+                                        isFullScreen={isFullScreen}
+                                        isRendererSupported={isRendererSupported}
+                                        isRtl={isRtl}
+                                        stageSize={stageSize}
+                                        vm={vm}
+                                    />
+                                    <Box className={styles.targetWrapper}>
+                                        <TargetPane
+                                            stageSize={stageSize}
+                                            vm={vm}
+                                        />
+                                    </Box>
+                                </Box> 
+                            :
+                                <>
+                                   <Hardware
                                     vm={vm}
-                                />
-                            </Box>
-                        </Box>*/}
-                        {((isRealtimeMode === false) && (stageSizeMode !== STAGE_SIZE_MODES.hide)) ? (
-                            <Hardware
-                                vm={vm}
-                                stageSize={stageSize}
-                            />) : null
+                                    stageSize={stageSize}
+                                    fullScreen={codeTabVisible}
+                                    />
+                                    <DragLayer />
+                                    <HardwareHeader
+                                        vm={vm}
+                                        stageSize={stageSize}
+                                        fullScreen={codeTabVisible}
+                                    />
+                                </>
+                             
                         }
                     </Box>
-                    <DragLayer />
-                    {(isRealtimeMode === false) ? (
-                        <HardwareHeader
-                            vm={vm}
-                            stageSize={stageSize}
-                        />) : null
-                    }
+                    
                 </Box>
             </Box>
         );
@@ -459,6 +483,8 @@ GUIComponent.propTypes = {
     logo: PropTypes.string,
     onActivateCostumesTab: PropTypes.func,
     onActivateSoundsTab: PropTypes.func,
+    onActivateCodeTab: PropTypes.func,
+    codeTabVisible : PropTypes.bool,
     onActivateTab: PropTypes.func,
     onClickAccountNav: PropTypes.func,
     onClickLogo: PropTypes.func,

@@ -24,9 +24,13 @@ const HardwareComponent = props => {
         onCodeEditorDidMount,
         onCodeEditorChange,
         onClickCodeEditorLock,
-        stageSize
+        stageSize,
+        fullScreen
     } = props;
-    const stageDimensions = getStageDimensions(stageSize, null);
+    let stageDimensions = getStageDimensions(stageSize, fullScreen);
+    if (fullScreen){
+        stageDimensions.width = window.screen.width*.99;
+    }
     return (
         <Box className={styles.hardwareWrapper}>
             <Box className={classNames(styles.codeEditorWrapper)}>
@@ -81,7 +85,8 @@ HardwareComponent.propTypes = {
     onCodeEditorDidMount: PropTypes.func,
     onCodeEditorChange: PropTypes.func,
     onClickCodeEditorLock: PropTypes.func,
-    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired
+    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
+    fullScreen: PropTypes.bool.isRequired
 };
 
 export default HardwareComponent;

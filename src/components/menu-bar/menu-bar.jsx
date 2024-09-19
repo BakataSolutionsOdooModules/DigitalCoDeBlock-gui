@@ -113,6 +113,9 @@ import uploadFirmwareIcon from './icon--upload-firmware.svg';
 import saveSvgAsPng from 'openblock-save-svg-as-png';
 import {showAlertWithTimeout} from '../../reducers/alerts';
 
+import GreenFlagOverlay from '../../containers/green-flag-overlay.jsx';
+import StopAll from '../../components/stop-all/stop-all.jsx';
+
 const ariaMessages = defineMessages({
     language: {
         id: 'gui.menuBar.LanguageSelector',
@@ -228,9 +231,11 @@ class MenuBar extends React.Component {
             'handleSelectDeviceMouseUp',
             'handleProgramModeSwitchOnChange',
             'handleProgramModeUpdate',
+            'handleGreenFlagClick',
             'handleScreenshot',
             'handleCheckUpdate',
-            'handleClearCache'
+            'handleClearCache',
+            'handleStopAllClick'
         ]);
         this.state = {
             isOverflow: false
@@ -448,6 +453,10 @@ class MenuBar extends React.Component {
             });
         }
     }
+    handleGreenFlagClick () {
+        this.props.vm.start();
+        this.props.vm.greenFlag();
+    }
     handleCheckUpdate () {
         this.props.onSetUpdate({phase: UPDATE_MODAL_STATE.checkingApplication});
         this.props.onClickCheckUpdate();
@@ -459,6 +468,10 @@ class MenuBar extends React.Component {
         if (readyClearCache) {
             this.props.onClickClearCache();
         }
+    }
+    handleStopAllClick (e) {
+        e.preventDefault();
+        this.props.vm.stopAll();
     }
     buildAboutMenu (onClickAbout) {
         if (!onClickAbout) {
@@ -484,6 +497,7 @@ class MenuBar extends React.Component {
             ))
         );
     }
+
     wrapAboutMenuCallback (callback) {
         return () => {
             callback();
@@ -845,18 +859,22 @@ class MenuBar extends React.Component {
                         />
                         {this.state.isOverflow ? null : <FormattedMessage {...ariaMessages.tutorials} />}
                     </div> */}
-                    <Divider className={classNames(styles.divider)} />
-                    <div
-                        className={classNames(styles.menuBarItem, styles.hoverable)}
-                        onMouseUp={this.handleScreenshot}
-                    >
-                        <img
-                            alt="Screenshot"
-                            className={classNames(styles.screenShotLogo)}
-                            draggable={false}
-                            src={screenshotIcon}
+                    {/*
+                        (this.props.deviceName && this.props.isRealtimeMode) ?
+                        ( 
+                        <>
+                        <Divider className={classNames(styles.divider)} />
+                         <GreenFlagOverlay
+                            className={styles.greenFlagOverlay}
                         />
-                    </div>
+                        <StopAll
+                            active={true}
+                            onClick={this.handleStopAllClick}
+                        />
+                        </>
+                       
+                    ) : <div />
+                    */}
                     <Divider className={classNames(styles.divider)} />
                     <div
                         className={classNames(styles.menuBarItem, this.props.isRealtimeMode &&

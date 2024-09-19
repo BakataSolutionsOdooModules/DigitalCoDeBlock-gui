@@ -44,10 +44,13 @@ const HardwareHeaderComponent = props => {
         onSetStageSmall,
         onSetStageHide,
         onUpload,
-        stageSize
+        stageSize,
+        fullScreen
     } = props;
-    const stageDimensions = getStageDimensions(stageSize === STAGE_DISPLAY_SIZES.hide ?
-        STAGE_DISPLAY_SIZES.small : stageSize, null);
+    let stageDimensions = getStageDimensions(stageSize === STAGE_DISPLAY_SIZES.hide ?
+        STAGE_DISPLAY_SIZES.small : stageSize, fullScreen);
+    if( fullScreen)
+        stageDimensions.width = window.screen.width * .5;
     return (
         <Box
             className={classNames(
@@ -139,7 +142,8 @@ HardwareHeaderComponent.propTypes = {
     onSetStageLarge: PropTypes.func.isRequired,
     onSetStageSmall: PropTypes.func.isRequired,
     onSetStageHide: PropTypes.func.isRequired,
-    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired
+    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
+    fullScreen: PropTypes.bool.isRequired
 };
 
 export default HardwareHeaderComponent;

@@ -3,7 +3,7 @@ const TOGGLE_LOCK = 'scratch-gui/code/TOGGLE_LOCK';
 
 const initialState = {
     codeEditorValue: '// Monaco editor',
-    isCodeEditorLocked: true
+    isCodeEditorLocked: false
 };
 
 const reducer = function (state, action) {

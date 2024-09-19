@@ -86,7 +86,8 @@ Hardware.propTypes = {
     onCodeEditorIsLocked: PropTypes.func.isRequired,
     onSetCodeEditorValue: PropTypes.func.isRequired,
     onToggleCodeEditorLock: PropTypes.func.isRequired,
-    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired
+    stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
+    fullScreen: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
