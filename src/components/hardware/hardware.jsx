@@ -29,7 +29,7 @@ const HardwareComponent = props => {
     } = props;
     let stageDimensions = getStageDimensions(stageSize, fullScreen);
     if (fullScreen){
-        stageDimensions.width = window.screen.width*.99;
+        stageDimensions.width = window.screen.width*.98;
     }
     return (
         <Box className={styles.hardwareWrapper}>
@@ -53,6 +53,7 @@ const HardwareComponent = props => {
                     onChange={onCodeEditorChange}
                     theme={codeEditorTheme}
                     options={codeEditorOptions}
+                    minimap={fullScreen}
                 />
             </Box>
             <Box

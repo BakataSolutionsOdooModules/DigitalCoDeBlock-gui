@@ -19,8 +19,11 @@ const CodeEditorComponent = props => {
         editorWillMount,
         editorDidMount,
         theme,
+        minimap,
         ...componentProps
     } = props;
+    
+    CodeEditorComponent.defaultProps.options.minimap.enabled = props.minimap;
     return (
         <Box
             className={styles.codeEditor}

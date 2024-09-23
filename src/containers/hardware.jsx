@@ -28,9 +28,9 @@ class Hardware extends React.Component {
         monaco.editor.defineTheme('readOnlyTheme', {
             base: 'vs',
             inherit: true,
-            rules: [{background: 'F9F9F9'}],
+            rules: [{background: 'a9a9a97a'}],
             colors: {
-                'editor.background': '#F9F9F9'
+                'editor.background': '#a9a9a97a'
             }
         });
     }
