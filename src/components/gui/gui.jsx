@@ -385,18 +385,13 @@ const GUIComponent = props => {
                                         <Watermark />
                                     </Box>
                                 </TabPanel>
-                                {
-                                    (isRealtimeMode === true) &&
-                                    <>
-                                        <TabPanel className={tabClassNames.tabPanel}>
-                                            {costumesTabVisible && <CostumeTab vm={vm} /> }
-                                        </TabPanel>
-                                        <TabPanel className={tabClassNames.tabPanel}>
-                                            {soundsTabVisible && <SoundTab vm={vm} onShowMessageBox={onShowMessageBox} /> }
-                                        </TabPanel>
-                                    </>
-                                }
-                               
+                                <TabPanel className={tabClassNames.tabPanel}>
+                                    {costumesTabVisible && <CostumeTab vm={vm} /> }
+                                </TabPanel>
+                                <TabPanel className={tabClassNames.tabPanel}>
+                                    {soundsTabVisible && <SoundTab vm={vm} onShowMessageBox={onShowMessageBox} /> }
+                                </TabPanel>
+                                <TabPanel></TabPanel>
                             </Tabs>
                             {/*
                                     backpackVisible ? (
