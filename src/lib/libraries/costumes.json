@@ -2799,6 +2799,20 @@
         "rotationCenterY": 80
     },
     {
+        "name": "Tobit-Dog",
+        "tags": [
+            "robot",
+            "scifi",
+            "animals"
+        ],
+        "assetId": "28d99a4f8b69f00182ec1656bc5cca54",
+        "bitmapResolution": 1,
+        "dataFormat": "svg",
+        "md5ext": "6bc0afe4d0156fd67ee9e92901ee1588.svg",
+        "rotationCenterX": 93,
+        "rotationCenterY": 90
+    },
+    {
         "name": "Devin-a",
         "tags": [
             "people"

@@ -68,20 +68,29 @@ const projectData = translateFunction => {
                 blocks: {},
                 currentCostume: 0,
                 costumes: [
+                    // {
+                    //     assetId: '5de48e72637db4d7fc7f6bb526354114',
+                    //     name: translator(messages.costume, {index: 1}),
+                    //     bitmapResolution: 1,
+                    //     md5ext: '5de48e72637db4d7fc7f6bb526354114.svg',
+                    //     dataFormat: 'svg',
+                    //     rotationCenterX: 93,
+                    //     rotationCenterY: 80
+                    // },
+                    // {
+                    //     assetId: '48bbc82a10af3d0e0b7d5c677097df0e',
+                    //     name: translator(messages.costume, {index: 2}),
+                    //     bitmapResolution: 1,
+                    //     md5ext: '48bbc82a10af3d0e0b7d5c677097df0e.svg',
+                    //     dataFormat: 'svg',
+                    //     rotationCenterX: 93,
+                    //     rotationCenterY: 80
+                    // },
                     {
-                        assetId: '5de48e72637db4d7fc7f6bb526354114',
+                        assetId: '6bc0afe4d0156fd67ee9e92901ee1588',
                         name: translator(messages.costume, {index: 1}),
                         bitmapResolution: 1,
-                        md5ext: '5de48e72637db4d7fc7f6bb526354114.svg',
-                        dataFormat: 'svg',
-                        rotationCenterX: 93,
-                        rotationCenterY: 80
-                    },
-                    {
-                        assetId: '48bbc82a10af3d0e0b7d5c677097df0e',
-                        name: translator(messages.costume, {index: 2}),
-                        bitmapResolution: 1,
-                        md5ext: '48bbc82a10af3d0e0b7d5c677097df0e.svg',
+                        md5ext: '6bc0afe4d0156fd67ee9e92901ee1588.svg',
                         dataFormat: 'svg',
                         rotationCenterX: 93,
                         rotationCenterY: 80
