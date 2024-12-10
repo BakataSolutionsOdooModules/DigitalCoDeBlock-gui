@@ -33,11 +33,6 @@ const messages = defineMessages({
         description: 'Link to the DigitalCoDeBlock privacy policy',
         id: 'gui.telemetryOptIn.privacyPolicyLink'
     },
-    optInTooltip: {
-        defaultMessage: 'Enable telemetry',
-        description: 'Tooltip for telemetry modal opt-in button',
-        id: 'gui.telemetryOptIn.optInTooltip'
-    },
     optOutText: {
         defaultMessage: 'Do not share my usage data with the DigitalCoDeBlock Team',
         description: 'Text for telemetry modal opt-in button',
@@ -123,7 +118,6 @@ class TelemetryModal extends React.PureComponent {
     render () {
         const isUndecided = (typeof this.props.isTelemetryEnabled !== 'boolean');
         const isOff = (this.props.isTelemetryEnabled === false);
-        const isOn = (this.props.isTelemetryEnabled === true);
         const settingWasUpdated = this.state.settingWasUpdatedTimer && (
             <FormattedMessage {...messages.settingWasUpdated} />
         );
