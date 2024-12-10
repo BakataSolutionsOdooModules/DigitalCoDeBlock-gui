@@ -108,6 +108,7 @@ import unconnectedIcon from './icon--unconnected.svg';
 import connectedIcon from './icon--connected.svg';
 import screenshotIcon from './icon--screenshot.svg';
 import settingIcon from './icon--setting.svg';
+import warningIcon from './icon--exclamation-triangle-solid.svg';
 
 import uploadFirmwareIcon from './icon--upload-firmware.svg';
 import saveSvgAsPng from 'openblock-save-svg-as-png';
@@ -914,6 +915,15 @@ class MenuBar extends React.Component {
                                 !this.props.isSupportSwitchMode ? '#888888' : '#FF8C1A'}
                             uncheckedIcon={false}
                             checkedIcon={false}
+                        />
+                    </div>
+                    <div className={classNames(styles.menuBarItem, styles.hoverable)}>
+                        <img
+                            alt="BetaWarning"
+                            className={classNames(styles.uploadFirmwareLogo)}
+                            draggable={false}
+                            src={warningIcon}
+                            onClick={() => {alert('hola');}}
                         />
                     </div>
                     {isScratchDesktop() ? (
