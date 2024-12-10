@@ -33,11 +33,6 @@ const messages = defineMessages({
         description: 'Link to the DigitalCoDeBlock privacy policy',
         id: 'gui.telemetryOptIn.privacyPolicyLink'
     },
-    optInText: {
-        defaultMessage: 'Share my usage data with the DigitalCoDeBlock Team',
-        description: 'Text for telemetry modal opt-in button',
-        id: 'gui.telemetryOptIn.optInText'
-    },
     optInTooltip: {
         defaultMessage: 'Enable telemetry',
         description: 'Tooltip for telemetry modal opt-in button',
@@ -159,17 +154,6 @@ class TelemetryModal extends React.PureComponent {
                         }}
                     /></p>
                     <Box className={styles.radioButtons}>
-                        <label className={isOn ? styles.labelSelected : null}>
-                            <input
-                                name="optInOut"
-                                type="radio"
-                                value="true"
-                                title={this.props.intl.formatMessage(messages.optInTooltip)}
-                                checked={this.props.isTelemetryEnabled === true}
-                                onChange={this.handleOptInOutChanged}
-                            />
-                            <FormattedMessage {...messages.optInText} />
-                        </label>
                         <label className={isOff ? styles.labelSelected : null}>
                             <input
                                 name="optInOut"
