@@ -17,6 +17,10 @@ const onClickCheckUpdate = () => {
     log('User click check update');
 };
 
+const onClickBetaMessage = () => {
+    log('User click beta message');
+};
+
 const onClickUpdate = () => {
     log('User click update');
 };
@@ -140,6 +144,7 @@ export default appTarget => {
                 onTelemetryModalOptOut={handleTelemetryModalOptOut}
                 onAbortUpdate={onAbortUpdate}
                 onClickCheckUpdate={onClickCheckUpdate}
+                onClickBetaMessage={onClickBetaMessage}
                 onClickUpdate={onClickUpdate}
                 onClickClearCache={onClickClearCache}
                 onClickInstallDriver={onClickInstallDriver}

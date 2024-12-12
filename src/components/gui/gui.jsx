@@ -35,6 +35,9 @@ import ConnectionModal from '../../containers/connection-modal.jsx';
 import UploadProgress from '../../containers/upload-progress.jsx';
 import TelemetryModal from '../telemetry-modal/telemetry-modal.jsx';
 import UpdateModal from '../../containers/update-modal.jsx';
+import BetaModal from '../../containers/beta-modal.jsx';
+
+
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
@@ -45,6 +48,7 @@ import codeIcon from './icon--code.svg';
 import costumesIcon from './icon--costumes.svg';
 import soundsIcon from './icon--sounds.svg';
 import programIcon from './icon--program.png';
+
 
 const messages = defineMessages({
     addExtension: {
@@ -89,6 +93,7 @@ const GUIComponent = props => {
         costumeLibraryVisible,
         costumesTabVisible,
         updateModalVisible,
+        betaModalVisible,
         enableCommunity,
         intl,
         isCreating,
@@ -114,6 +119,7 @@ const GUIComponent = props => {
         onActivateTab,
         onClickLogo,
         onClickCheckUpdate,
+        onClickBetaMessage,
         onClickUpdate,
         onClickClearCache,
         onClickInstallDriver,
@@ -244,6 +250,9 @@ const GUIComponent = props => {
                         onShowMessageBox={onShowMessageBox}
                     />
                 ) : null}
+                {betaModalVisible ? (
+                    <BetaModal />
+                ) : null }
                 <MenuBar
                     accountNavOpen={accountNavOpen}
                     authorId={authorId}
@@ -276,6 +285,7 @@ const GUIComponent = props => {
                     onShowMessageBox={onShowMessageBox}
                     onToggleLoginOpen={onToggleLoginOpen}
                     onClickCheckUpdate={onClickCheckUpdate}
+                    onClickBetaMessage={onClickBetaMessage}
                     onClickClearCache={onClickClearCache}
                     onClickInstallDriver={onClickInstallDriver}
                 />
@@ -483,6 +493,7 @@ GUIComponent.propTypes = {
     onClickAccountNav: PropTypes.func,
     onClickLogo: PropTypes.func,
     onClickCheckUpdate: PropTypes.func,
+    onClickBetaMessage: PropTypes.func,
     onAbortUpdate: PropTypes.func,
     onClickUpdate: PropTypes.func,
     onClickClearCache: PropTypes.func,

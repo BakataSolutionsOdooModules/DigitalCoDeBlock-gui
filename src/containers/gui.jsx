@@ -142,6 +142,7 @@ const mapStateToProps = state => {
         connectionModalVisible: state.scratchGui.modals.connectionModal,
         uploadProgressVisible: state.scratchGui.modals.uploadProgress,
         updateModalVisible: state.scratchGui.modals.updateModal,
+        betaModalVisible: state.scratchGui.modals.betaModal,
         costumeLibraryVisible: state.scratchGui.modals.costumeLibrary,
         costumesTabVisible: state.scratchGui.editorTab.activeTabIndex === COSTUMES_TAB_INDEX,
         error: state.scratchGui.projectState.error,

@@ -35,6 +35,7 @@ import {
     openTipsLibrary,
     openUploadProgress,
     openUpdateModal,
+    openBetaModal,
     openConnectionModal,
     openDeviceLibrary
 } from '../../reducers/modals';
@@ -235,6 +236,7 @@ class MenuBar extends React.Component {
             'handleGreenFlagClick',
             'handleScreenshot',
             'handleCheckUpdate',
+            'handleBetaMessage',
             'handleClearCache',
             'handleStopAllClick'
         ]);
@@ -461,6 +463,10 @@ class MenuBar extends React.Component {
     handleCheckUpdate () {
         this.props.onSetUpdate({phase: UPDATE_MODAL_STATE.checkingApplication});
         this.props.onClickCheckUpdate();
+    }
+    handleBetaMessage () {
+        this.props.onClickBetaModal();
+        // this.props.onClickBetaMessage();
     }
     handleClearCache () {
         const readyClearCache = this.props.confirmClearCache(
@@ -917,13 +923,15 @@ class MenuBar extends React.Component {
                             checkedIcon={false}
                         />
                     </div>
-                    <div className={classNames(styles.menuBarItem, styles.hoverable)}>
+                    <div
+                        className={classNames(styles.menuBarItem, styles.hoverable)}
+                        onClick={this.handleBetaMessage}
+                    >
                         <img
                             alt="BetaWarning"
-                            className={classNames(styles.uploadFirmwareLogo)}
+                            className={classNames(styles.warningIcon)}
                             draggable={false}
                             src={warningIcon}
-                            onClick={() => {alert('hola');}}
                         />
                     </div>
                     {isScratchDesktop() ? (
@@ -1034,6 +1042,7 @@ MenuBar.propTypes = {
     onClickSave: PropTypes.func,
     onClickSaveAsCopy: PropTypes.func,
     onClickCheckUpdate: PropTypes.func,
+    onClickBetaModal: PropTypes.func,
     onClickClearCache: PropTypes.func,
     onClickInstallDriver: PropTypes.func,
     onLogOut: PropTypes.func,
@@ -1126,6 +1135,7 @@ const mapDispatchToProps = dispatch => ({
     onClickFile: () => dispatch(openFileMenu()),
     onRequestCloseFile: () => dispatch(closeFileMenu()),
     onClickSetting: () => dispatch(openSettingMenu()),
+    onClickBetaModal: () => dispatch(openBetaModal()),
     onRequestCloseSetting: () => dispatch(closeSettingMenu()),
     onClickEdit: () => dispatch(openEditMenu()),
     onRequestCloseEdit: () => dispatch(closeEditMenu()),
@@ -1161,7 +1171,8 @@ const mapDispatchToProps = dispatch => ({
     onWorkspaceIsEmpty: () => showAlertWithTimeout(dispatch, 'workspaceIsEmpty'),
     onWorkspaceIsNotEmpty: () => showAlertWithTimeout(dispatch, 'workspaceIsNotEmpty'),
     onOpenDeviceLibrary: () => dispatch(openDeviceLibrary()),
-    onDeviceIsEmpty: () => showAlertWithTimeout(dispatch, 'selectADeviceFirst')
+    onDeviceIsEmpty: () => showAlertWithTimeout(dispatch, 'selectADeviceFirst'),
+    onCloseBetaModal: () => dispatch(closeBetaModal())
 });
 
 export default compose(

@@ -342,3 +342,16 @@
     object-fit: contain;
 }
 
+.warning-icon{
+    height:  20px;
+    vertical-align: middle;
+    animation: warning-icon-color 1s infinite;
+    filter: sepia(100%) saturate(1500%);
+}
+
+@keyframes warning-icon-color {
+    50% {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+}
