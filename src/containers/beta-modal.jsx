@@ -27,7 +27,6 @@ class BetaModal extends React.Component {
     render () {
         return (
             <BetaModalComponent
-                // intl={this.props.intl}
                 onCancel={this.handleCancel}
             />
         );
@@ -42,7 +41,6 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     onCloseBetaModal: () => {
-        console.log("hola");
         dispatch(closeBetaModal());
     }
 });

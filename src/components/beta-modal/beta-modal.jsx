@@ -19,14 +19,14 @@ const BetaModalComponent = props => (
             <div>
                 <div className={styles.betaTitle}>
                     <FormattedMessage
-                        defaultMessage="Test Title"
+                        defaultMessage="Information"
                         description="Tile of beta modal"
                         id="gui.betaModal.title"
                     />
                 </div>
                 <div className={styles.betaInfo}>
                     <FormattedMessage
-                        defaultMessage="Test Body"
+                        defaultMessage="This application is in beta."
                         description="Message for the beta modal"
                         id="gui.betaModal.body"
                     />
