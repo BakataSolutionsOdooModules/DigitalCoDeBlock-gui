@@ -1,6 +1,6 @@
 {
   "name": "digitalcodeblock-gui",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "GraphicaL User Interface for creating and running Scratch projects",
   "main": "./dist/scratch-gui.js",
   "scripts": {
