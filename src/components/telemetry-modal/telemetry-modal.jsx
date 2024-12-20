@@ -22,8 +22,7 @@ const messages = defineMessages({
         id: 'gui.telemetryOptIn.body1'
     },
     bodyText2: {
-        defaultMessage: 'The information we collect includes language selection, blocks usage, and some events like ' +
-            'saving, loading, and uploading a project. We DO NOT collect any personal information. Please see our ' +
+        defaultMessage: 'We DO NOT collect any personal information. Please see our ' +
             '{privacyPolicyLink} for more information.',
         description: 'First paragraph of body text for telemetry opt-in modal',
         id: 'gui.telemetryOptIn.body2'
@@ -132,7 +131,6 @@ class TelemetryModal extends React.PureComponent {
                 <Box className={styles.illustration} />
 
                 <Box className={styles.body}>
-                    <p><FormattedMessage {...messages.bodyText1} /></p>
                     <p><FormattedMessage
                         {...messages.bodyText2}
                         values={{
